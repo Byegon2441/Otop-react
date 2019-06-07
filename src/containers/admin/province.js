@@ -99,7 +99,7 @@ class Home extends Component {
 				
 			  </div>
               <div className="col-md-6">
-              <h1 className="text-center">เพิ่มจังหวัด</h1>
+              <h1 className="text-center">-เพิ่มจังหวัด-</h1>
               
               <Selected datasource={this.state.dataGeo} size="FullWidth" fnc={this.handleChange} nameShow="ภูมิภาค" name="geo_id" state={this.state.geo_id} /> 
                    
