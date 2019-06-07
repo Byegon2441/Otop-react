@@ -6,7 +6,7 @@ import SelectProv from '../../components/Util/SelectProvince'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Selected from '../../components/Util/Selected'
-class Home extends Component {
+class Province extends Component {
 
 	constructor(props){
 		super(props);
@@ -15,7 +15,7 @@ class Home extends Component {
             province_name:'',
             province_name_eng:'',
             geo_id:false,
-            dataGeo:'',
+            data:'',
 		}
         this.Auth = new Auth();
         this.unhandleChange = this.unhandleChange.bind(this);
@@ -27,16 +27,16 @@ class Home extends Component {
         this.Auth.fetch(`${Url}/api/user/getGeography`, { method: "GET" })
         .then(res=>{
             
-            this.setState({dataGeo:res})
+            this.setState({data:res})
             
         })
     }
 
-    componentWillMount(){
-        if(!this.Auth.loggedIn()){
-            this.props.history.replace('/');
-        }
-    }
+    // componentWillMount(){
+    //     if(!this.Auth.loggedIn()){
+    //         this.props.history.replace('/');
+    //     }
+    // }
 
     async unhandleChange(name,value){
         
@@ -99,9 +99,9 @@ class Home extends Component {
 				
 			  </div>
               <div className="col-md-6">
-              <h1 className="text-center">-เพิ่มจังหวัด-</h1>
+              <h1 className="text-center">เพิ่มจังหวัด</h1>
               
-              <Selected datasource={this.state.dataGeo} size="FullWidth" fnc={this.handleChange} nameShow="ภูมิภาค" name="geo_id" state={this.state.geo_id} /> 
+              <Selected datasource={this.state.data} size="FullWidth" fnc={this.handleChange} nameShow="ภูมิภาค" name="geo_id" state={this.state.geo_id} /> 
                    
                 <TextField  margin="dense" name="province_code" label="รหัสจังหวัด" type="Number" value={this.state.province_code} onChange={this.handleChange} fullWidth />
                 <TextField  margin="dense" name="province_name" label="ชื่อจังหวัดภาษาไทย" type="text" value={this.state.province_name} onChange={this.handleChange} fullWidth />
@@ -124,4 +124,5 @@ class Home extends Component {
 }
 
 
-export default withAdmin(Home);
+export default (Province);
+// export default withAdmin(Province)
