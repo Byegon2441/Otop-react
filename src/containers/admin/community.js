@@ -6,7 +6,7 @@ import SelectProv from '../../components/Util/SelectProvince'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-class Home extends Component {
+class Community extends Component {
 
 	constructor(props){
 		super(props);
@@ -100,4 +100,4 @@ class Home extends Component {
 }
 
 
-export default withAdmin(Home);
+export default withAdmin(Community);
