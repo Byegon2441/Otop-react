@@ -13,6 +13,8 @@ import EditProduct from "./containers/User/EditProduct"
 import Community from './containers/admin/community';
 import ProductView from './containers/User/ProductView'
 import Province from './containers/admin/province';
+import Amphur from './containers/admin/amphures'
+import Districts from './containers/admin/districts'
 class App extends Component {
 
   renderRouter() {
@@ -28,6 +30,8 @@ class App extends Component {
         <Route exact path="/AddCommunity" component={Community}/>
         
         <Route exact path="/AddProvince" component={Province}/>
+        <Route exact path="/AddAmphur" component={Amphur}/>
+        <Route exact path="/AddDistricts" component={Districts}/>
         <Route component={NotFound} />
       </Switch>;
 	}
