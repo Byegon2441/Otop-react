@@ -23,14 +23,14 @@ class Province extends Component {
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
     }
     
-    componentDidMount(){
-        this.Auth.fetch(`${Url}/api/user/getGeography`, { method: "GET" })
-        .then(res=>{
+    // componentDidMount(){
+    //     this.Auth.fetch(`${Url}/api/user/getGeography`, { method: "GET" })
+    //     .then(res=>{
             
-            this.setState({data:res})
+    //         this.setState({data:res})
             
-        })
-    }
+    //     })
+    // }
 
     // componentWillMount(){
     //     if(!this.Auth.loggedIn()){
@@ -65,7 +65,7 @@ class Province extends Component {
         // this.Auth.fetch(`${Url}/api/admin/AddProvince`,{
         //     method:"POST",
         //     body:JSON.stringify({
-        //         province_code:province_code,
+        //         province_code:this.state.province_code,
         //         province_name:this.state.province_name,
         //         province_name_eng:this.state.province_name_eng,
         //         geo_id:this.state.geo_id,
