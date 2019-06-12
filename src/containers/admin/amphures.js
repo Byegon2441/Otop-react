@@ -23,20 +23,20 @@ class Amphures extends Component {
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
     }
     
-    componentDidMount(){
-        this.Auth.fetch(`${Url}/api/user/getGeography`, { method: "GET" })
-        .then(res=>{
+    // componentDidMount(){
+    //     this.Auth.fetch(`${Url}/api/user/getGeography`, { method: "GET" })
+    //     .then(res=>{
             
-            this.setState({data:res})
+    //         this.setState({data:res})
             
-        })
-    }
+    //     })
+    // }
 
-    componentWillMount(){
-        if(!this.Auth.loggedIn()){
-            this.props.history.replace('/');
-        }
-    }
+    // componentWillMount(){
+    //     if(!this.Auth.loggedIn()){
+    //         this.props.history.replace('/');
+    //     }
+    // }
 
     async unhandleChange(name,value){
         
@@ -55,9 +55,9 @@ class Amphures extends Component {
 
         let regEng = /^[a-zA-Z]{3,30}$/
         let regThai = /^[ก-๙]{3,30}$/
-        let {province_code,province_name,province_name_eng,_id} = this.state
+        let {amphur_code,amphur_name,amphur_name_eng,province_id} = this.state
 
-        if(province_code&&geo_id&&regThai.test(province_name)&&regEng.test(province_name_eng)){
+        if(amphur_code&&province_id&&regThai.test(amphur_name)&&regEng.test(amphur_name_eng)){
             
             console.log('pass');
             
@@ -65,17 +65,17 @@ class Amphures extends Component {
         // this.Auth.fetch(`${Url}/api/admin/AddProvince`,{
         //     method:"POST",
         //     body:JSON.stringify({
-        //         province_code:province_code,
-        //         province_name:this.state.province_name,
-        //         province_name_eng:this.state.province_name_eng,
-        //         geo_id:this.state.geo_id,
+        //         amphur_code:this.state.amphur_code,
+        //         amphur_name:this.state.amphur_name,
+        //         amphur_name_eng:this.state.amphur_name_eng,
+        //         province_id:this.state.province_id,
         //     })
         // })
         // .then(res=>{
             
         //     if(res.result ==="Success"){
                 
-        //         alert(`${res.data} ชื่อจังหวัด ${res.dataAdded}`)
+        //         alert(`${res.data} ชื่ออำเภอ ${res.dataAdded}`)
         //     }else{
         //         console.log(res)
         //     }
@@ -99,13 +99,13 @@ class Amphures extends Component {
 				
 			  </div>
               <div className="col-md-6">
-              <h1 className="text-center">-เพิ่มจังหวัด-</h1>
+              <h1 className="text-center">เพิ่มอำเภอ</h1>
               
-              <Selected datasource={this.state.data} size="FullWidth" fnc={this.handleChange} nameShow="ภูมิภาค" name="geo_id" state={this.state.geo_id} /> 
+              <Selected datasource={this.state.data} size="FullWidth" fnc={this.handleChange} nameShow="จังหวัด" name="province_id" state={this.state.province_id} /> 
                    
-                <TextField  margin="dense" name="province_code" label="รหัสจังหวัด" type="Number" value={this.state.province_code} onChange={this.handleChange} fullWidth />
-                <TextField  margin="dense" name="province_name" label="ชื่อจังหวัดภาษาไทย" type="text" value={this.state.province_name} onChange={this.handleChange} fullWidth />
-                <TextField  margin="dense" name="province_name_eng" label="ชื่อจังหวัดภาษาอังกฤษ" type="text" value={this.state.province_name_eng} onChange={this.handleChange} fullWidth />
+                <TextField  margin="dense" name="amphur_code" label="รหัสอำเภอ" type="Number" value={this.state.amphur_code} onChange={this.handleChange} fullWidth />
+                <TextField  margin="dense" name="amphur_name" label="ชื่อจอำเภอภาษาไทย" type="text" value={this.state.amphur_name} onChange={this.handleChange} fullWidth />
+                <TextField  margin="dense" name="amphur_name_eng" label="ชื่อจอำเภอภาษาอังกฤษ" type="text" value={this.state.amphur_name_eng} onChange={this.handleChange} fullWidth />
                 
                 <Button variant="contained" color="primary" fullWidth  onClick={this.handleFormSubmit}>
                     เพิ่มข้อมูล
@@ -124,4 +124,5 @@ class Amphures extends Component {
 }
 
 
-export default withAdmin(Amphures);
+//export default withAdmin(Amphures);
+export default (Amphures);
